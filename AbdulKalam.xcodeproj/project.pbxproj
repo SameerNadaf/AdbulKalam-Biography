@@ -26,6 +26,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		424E25792E69B5A000FDBA73 /* ScreenShots */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ScreenShots;
+			sourceTree = "<group>";
+		};
 		4275C2972E69AC7500421E51 /* AbdulKalam */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -50,6 +55,7 @@
 		4275C28C2E69AC7500421E51 = {
 			isa = PBXGroup;
 			children = (
+				424E25792E69B5A000FDBA73 /* ScreenShots */,
 				4275C2982E69AC7500421E51 /* AbdulKalamApp.swift */,
 				4275C2972E69AC7500421E51 /* AbdulKalam */,
 				4275C2962E69AC7500421E51 /* Products */,
@@ -80,6 +86,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				424E25792E69B5A000FDBA73 /* ScreenShots */,
 				4275C2972E69AC7500421E51 /* AbdulKalam */,
 			);
 			name = AbdulKalam;
