@@ -27,11 +27,12 @@ struct QuotesView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $viewModel.selectedIndex) {
-                ForEach(viewModel.quotes, id: \.id) { quote in
+                ForEach(viewModel.quotes.indices, id: \.self) { index in
+                    let quote = viewModel.quotes[index]
                     QuoteCardView(quote: quote)
-                        .scaleEffect(viewModel.selectedIndex == quote.id ? 1.0 : 0.95)
+                        .scaleEffect(viewModel.selectedIndex == index ? 1.0 : 0.95)
                         .animation(.easeInOut, value: viewModel.selectedIndex)
-                        .tag(quote.id)
+                        .tag(index)
                 }
             }
             .frame(height: UIScreen.main.bounds.height/2)

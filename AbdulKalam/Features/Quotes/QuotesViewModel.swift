@@ -25,7 +25,7 @@ class QuotesViewModel: ObservableObject {
     }
     
     var currentQuote: Quote? {
-        guard !quotes.isEmpty else { return nil }
-        return quotes.first { $0.id == selectedIndex }
+        guard quotes.indices.contains(selectedIndex) else { return nil }
+        return quotes[selectedIndex]
     }
 }
