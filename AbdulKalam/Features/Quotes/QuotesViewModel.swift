@@ -7,29 +7,25 @@
 
 import SwiftUI
 
-import SwiftUI
-
 class QuotesViewModel: ObservableObject {
     @Published var quotes: [Quote] = []
     @Published var selectedIndex: Int = 0
     
     func fetchQuotes(for language: AppLanguage) {
+        let currentQuoteID = quotes.indices.contains(selectedIndex) ? quotes[selectedIndex].id : nil
+        
         quotes = QuoteService.fetchQuotes(for: language)
-        selectedIndex = quotes.isEmpty ? 0 : quotes.count / 2
+        
+        if let id = currentQuoteID,
+            let newIndex = quotes.firstIndex(where: { $0.id == id }) {
+            selectedIndex = newIndex
+        } else {
+            selectedIndex = 0
+        }
     }
     
     var currentQuote: Quote? {
         guard !quotes.isEmpty else { return nil }
-        return quotes[selectedIndex]
-    }
-    
-    func nextQuote() {
-        guard !quotes.isEmpty else { return }
-        selectedIndex = (selectedIndex + 1) % quotes.count
-    }
-    
-    func previousQuote() {
-        guard !quotes.isEmpty else { return }
-        selectedIndex = (selectedIndex - 1 + quotes.count) % quotes.count
+        return quotes.first { $0.id == selectedIndex }
     }
 }

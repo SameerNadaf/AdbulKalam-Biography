@@ -19,7 +19,6 @@ enum AppLanguage: String, CaseIterable {
     }
 }
 
-
 struct QuotesView: View {
     @StateObject private var viewModel = QuotesViewModel()
     @State private var isSharePresented: Bool = false
