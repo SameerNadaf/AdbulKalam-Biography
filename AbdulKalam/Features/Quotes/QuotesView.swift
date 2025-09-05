@@ -25,7 +25,7 @@ struct QuotesView: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: String = AppLanguage.english.rawValue
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             TabView(selection: $viewModel.selectedIndex) {
                 ForEach(viewModel.quotes.indices, id: \.self) { index in
                     let quote = viewModel.quotes[index]
@@ -70,6 +70,7 @@ struct QuotesView: View {
                 }
             }
         }
+        
         // Reload quotes whenever the selected language changes
         .onChange(of: selectedLanguage) {oldvalue, newValue in
             if let lang = AppLanguage(rawValue: newValue) {

@@ -12,8 +12,8 @@ struct AwardsView: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: String = AppLanguage.english.rawValue
     
     var body: some View {
-        NavigationView {
-            ScrollView {
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 0) {
                     // Header Row
                     HStack {
@@ -53,7 +53,6 @@ struct AwardsView: View {
                 }
                 .padding(.horizontal)
             }
-            .scrollIndicators(.hidden)
             .navigationTitle("Awards & Honours")
             .navigationBarTitleDisplayMode(.inline)
             

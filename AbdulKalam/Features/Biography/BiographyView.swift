@@ -12,15 +12,15 @@ struct BiographyView: View {
     @StateObject private var viewModel = BiographyViewModel()
 
     var body: some View {
-        NavigationView {
-            ScrollView {
+        NavigationStack {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 16) {
                     
                     // Image
                     Image(viewModel.imageName)
                         .resizable()
                         .scaledToFill()
-                        .frame(height: 250)
+                        .frame(height: UIDevice.current.userInterfaceIdiom == .pad ? 480 : 250)
                         .clipped()
                         .cornerRadius(16)
                         .shadow(radius: 5)
@@ -73,6 +73,7 @@ struct BiographyView: View {
                 }
                 .padding(.vertical)
             }
+            .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? UIScreen.main.bounds.width * 0.8 : .infinity)
         }
         .onAppear {
             viewModel.language = AppLanguage(rawValue: selectedLanguage) ?? .english

@@ -35,6 +35,11 @@ struct QuoteCardView: View {
             }
             .padding()
         }
+        .frame(
+            width: UIDevice.current.userInterfaceIdiom == .pad
+            ? UIScreen.main.bounds.width * 0.6
+            : .infinity
+        )
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(radius: 10)
         .padding(.horizontal)

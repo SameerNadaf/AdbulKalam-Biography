@@ -43,6 +43,7 @@ struct AboutView: View {
             }
             .padding()
         }
+        .frame(maxWidth: UIDevice.current.userInterfaceIdiom == .pad ? UIScreen.main.bounds.width * 0.8 : .infinity)
         .scrollIndicators(.hidden)
         .sheet(isPresented: $isMailPresented) {
             MailView(isPresented: $isMailPresented,
